@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+sources/interview.zip
+sources/AS-IS.puml
+sources/OrderProcessingService.java
+sources/interview-business.md
+sources/interview-support.md
+sources/developer-interviews/
+.tools/

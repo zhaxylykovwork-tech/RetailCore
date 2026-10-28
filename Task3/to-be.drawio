@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="Task3-to-be" name="Контекст">
+    <mxGraphModel dx="1920" dy="1320" grid="1" gridSize="10" page="1" pageWidth="1920" pageHeight="1320">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="group0" value="Legacy" style="rounded=1;arcSize=2;fillColor=#fff8e7;strokeColor=#a9b8cd;verticalAlign=top;align=left;spacing=18;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="245" width="705" height="735" as="geometry" />
+        </mxCell>
+        <mxCell id="group1" value="Read-only" style="rounded=1;arcSize=2;fillColor=#eef5ff;strokeColor=#a9b8cd;verticalAlign=top;align=left;spacing=18;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="875" y="245" width="995" height="735" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" value="старый write-path" source="client" target="core" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.4027777777777778;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" value="read-only" source="operator" target="facade" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="SQL" source="core" target="db" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=1.0;exitY=0.3191489361702128;exitPerimeter=0;entryX=0.0;entryY=0.43333333333333335;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="snapshot W0 + delta • без записи обратно" source="db" target="capture" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=1.0;exitY=0.7333333333333333;exitPerimeter=0;entryX=0.0;entryY=0.5833333333333334;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="480" />
+              <mxPoint x="800" y="540" />
+              <mxPoint x="1430" y="540" />
+              <mxPoint x="1430" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="capture position" source="capture" target="buffer" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="dedup / apply" source="buffer" target="projection" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.0;exitY=0.4782608695652174;exitPerimeter=0;entryX=1.0;entryY=0.3793103448275862;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="чтение с freshness" source="facade" target="projection" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.234375;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" value="старое чтение / fallback" source="facade" target="core" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.0;exitY=0.2916666666666667;exitPerimeter=0;entryX=0.8611111111111112;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="835" y="385" />
+              <mxPoint x="835" y="300" />
+              <mxPoint x="395" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="shared DB / batch" source="aux" target="db" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.813953488372093;exitY=0.0;exitPerimeter=0;entryX=0.5;entryY=1.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" value="сохранённые интеграции" source="core" target="partners" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.0;exitY=0.8085106382978723;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="25" y="550" />
+              <mxPoint x="25" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="сверка / serving watermark" source="projection" target="observe" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.2727272727272727;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" value="lag / replay" source="buffer" target="observe" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.8181818181818182;entryY=0.0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="дальше: отдельный gate" source="projection" target="next" style="edgeStyle=none;rounded=0;endArrow=block;html=0;noLabel=1;strokeColor=#415674;fontSize=17;exitX=1.0;exitY=0.8620689655172413;exitPerimeter=0;entryX=0.47435897435897434;entryY=0.0;entryPerimeter=0;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="client" value="Клиенты / маркетплейсы&#10;Те же каналы и write-контракт" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="75" y="125" width="310" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="operator" value="Оператор пилота&#10;Только чтение + legacy link" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="930" y="125" width="310" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="core" value="Java-ядро — сохраняется&#10;Create / reserve / price / promo&#10;Payment / Delivery / Status&#10;Commands / admin в legacy&#10;Новых бизнес-writers нет" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff1cb;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="85" y="360" width="360" height="235" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Oracle — сохраняется&#10;Данные + packages&#10;Writers: проверить Q-08" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff1cb;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="490" y="370" width="240" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="aux" value="Существующие .NET / batch / Python / Admin&#10;Staging, прямые чтения и ручные ветки пока остаются&#10;Сначала инвентаризация; перенос по отдельным gates" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff1cb;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="85" y="740" width="645" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="facade" value="Read facade / feature flag&#10;Когорта → projection&#10;Остальное / fallback → legacy" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ddebff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="930" y="350" width="310" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="capture" value="Capture (Oracle CDC)&#10;Committed changes / W0 / W1&#10;Только после Q-07 spike" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ddebff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="370" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="buffer" value="Buffer / checkpoint&#10;Position / eventId / replay&#10;Никаких команд партнёрам" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ddebff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="635" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="projection" value="Normalizer / read model&#10;Provenance / coverageStart&#10;Freshness / UNKNOWN&#10;Источник истины — legacy" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ddebff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="635" width="320" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="observe" value="Контроль: lag / gaps / mismatch / доступ / Oracle / checkout&#10;Необъяснённая ошибка → rollback чтения; source data не переписываются" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ddebff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="930" y="880" width="880" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="partners" value="Платежи / доставка / склады / партнёры&#10;Существующие операции сохраняются; shadow не повторяет эффекты" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="85" y="1050" width="645" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="next" value="Следующие этапы, не scope первого cutover&#10;Один отчёт → одна интеграция/ACL → дальнейшие seams и импортонезависимость" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e9ecf0;strokeColor=#516780;align=left;spacing=16;fontSize=19;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1050" width="780" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="label0" value="старый write-path" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="245" y="310" width="144.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label1" value="read-only" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="305" width="78.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label2" value="SQL" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="444" y="395" width="41.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label3" value="snapshot W0 + delta • без записи обратно" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="850" y="510" width="333.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label4" value="capture position" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1665" y="555" width="127.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label5" value="dedup / apply" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="650" width="108.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label6" value="чтение с freshness" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="555" width="155.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label7" value="старое чтение / fallback" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="470" y="310" width="193.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label8" value="shared DB / batch" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="625" y="600" width="143.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label9" value="сохранённые интеграции" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="85" y="990" width="205.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label10" value="сверка / serving watermark" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1185" y="822" width="214.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label11" value="lag / replay" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1665" y="812" width="91.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="label12" value="дальше: отдельный gate" style="text;html=0;align=left;verticalAlign=top;fontSize=17;spacing=0;fillColor=#f6f8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1415" y="990" width="202.0" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="note0" value="TO-BE первого этапа • обратимое выделение операторского чтения" style="text;html=0;align=left;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="40" y="16" width="1840" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" value="Жёлтый — сохраняется; синий — добавляется для TP-01; серый — последующие этапы. Стрелки показывают запрос/данные по подписи.&#10;Capture и проекция условны: Q-03/06/07/08 и capacity/replay gates обязательны. Без доказанного захвата — legacy facade, проекция не включается.&#10;Никаких projection → Oracle writes, двойной отправки оплаты/доставки или полной замены Oracle в первом этапе." style="text;html=0;align=left;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1190" width="1840" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
